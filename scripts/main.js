@@ -15,6 +15,7 @@ function initializeApp() {
 
       swRegistration = swReg
       initializeUi()
+      setTimeout(displayNotification, 5000)
     }).catch(error => {
       console.log("Service Worker Error", error)
     })
