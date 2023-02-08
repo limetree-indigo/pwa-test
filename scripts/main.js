@@ -1,6 +1,7 @@
 "user strict"
 
 const notificationButton = document.getElementById("enableNotifications")
+const statusBadge = document.getElementById("status")
 let swRegistration = null
 
 initializeApp()
@@ -15,7 +16,7 @@ function initializeApp() {
 
       swRegistration = swReg
       initializeUi()
-      setTimeout(displayNotification, 5000)
+      setTimeout(notification1, 5000)
     }).catch(error => {
       console.log("Service Worker Error", error)
     })
@@ -27,13 +28,13 @@ function initializeApp() {
 
 function initializeUi () {
   notificationButton.addEventListener("click", () => {
-    displayNotification()
+    displayNotification(1)
   })
 }
 
 function displayNotification () {
-  if(window.Notification && Notification.permission === "granted") {
-    notification()
+  if(window.Notification && Notification.permission === "granted") {    
+    notification()    
   } else if(window.Notification && Notification.permission !== "denied") {
     Notification.requestPermission(status => {
       if(status === "granted") {
@@ -54,3 +55,25 @@ function notification () {
   }
   swRegistration.showNotification("PWA 알림", options)
 }
+
+function notification1 () {
+  const options = {
+    body: "Test 1111"
+  }
+  swRegistration.showNotification("Test", options)
+}
+
+statusBadge.innerText = navigator.onLine ? "정상" : "비정상"
+statusBadge.style.background = navigator.onLine ? "green" : "red"
+
+window.addEventListener('online', () => {
+    statusBadge.innerText = "정상"
+    statusBadge.style.background = "green"
+  }
+)
+
+window.addEventListener('offline', () => {
+    statusBadge.innerText = "비정상"
+    statusBadge.style.background = "red"
+  }
+)
