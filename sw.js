@@ -1,4 +1,4 @@
-const WEB_CACHe = 'web-app-cache-v1.0'
+const WEB_CACHE = 'web-app-cache-v1.0'
 const filesToCache = [
   '/',
   '/style.css',
@@ -8,12 +8,21 @@ const filesToCache = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(WEB_CACHe).then((cache) => {
+    caches.open(WEB_CACHE).then((cache) => {
       return cache.addAll(filesToCache)
     })
   )
 })
 
 self.addEventListener('fetch', function(e) {
-    // 여기에 코드를 넣지 않아도 설치는 가능하다.
-  })
+  // console.log(`[Service Worker] Fetched resourece ${e.request.url}`)
+  // console.log(self.location.origin)
+})
+
+self.addEventListener('notificationclick', function(event) {
+  const url = event.notification.data.url
+  const promiseChain = clients.openWindow(url)
+  event.waitUntil(promiseChain)
+})
+
+
