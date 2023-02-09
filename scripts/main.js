@@ -26,8 +26,7 @@ displayNotificationBtn()
 
 
 exampleNewWindow.addEventListener('click', (event) => {
-  const promiseChain = self.clients.openWindow('/example.html')
-  event.waitUntil(promiseChain)
+  window.open('/example.html')
 })
 
 function initializeApp() {
