@@ -149,23 +149,23 @@ function imageNotification () {
   swRegistration.showNotification("Test", options)
 }
 
-function actionNotification () {
-  const title = 'Action Notification'
-  const options = {
-    actions: [
-      {
-        action: 'naver',
-        title: 'Naver',
-        icon: '/imgs/bell.png'
-      },
-      {
-        action: 'Google',
-        title: 'Google',
-        icon: '/imgs/bell.png'
-      }
-    ]
-  }
-  swRegistration.showNotification(title, options)
-}
+// function actionNotification () {
+//   const title = 'Action Notification'
+//   const options = {
+//     actions: [
+//       {
+//         action: 'naver',
+//         title: 'Naver',
+//         icon: '/imgs/bell.png'
+//       },
+//       {
+//         action: 'Google',
+//         title: 'Google',
+//         icon: '/imgs/bell.png'
+//       }
+//     ]
+//   }
+//   swRegistration.showNotification(title, options)
+// }
 
 
