@@ -59,9 +59,9 @@ function initializeUi () {
   notificationImage.addEventListener("click", () => {
     imageNotification()
   })
-  notificationAction.addEventListener("click", () => {
-    actionNotification()
-  })
+  // notificationAction.addEventListener("click", () => {
+  //   actionNotification()
+  // })
 }
 
 function displayNotificationBtn () {
